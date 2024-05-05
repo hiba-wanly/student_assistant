@@ -83,7 +83,12 @@ class _HomeViewState extends State<HomeView> {
         fatherController = TextEditingController();
         numberController = TextEditingController();
         Student student;
-
+        selectedStatus = null;
+         selectedYear = null;
+        selectedSection = null;
+         selectedSemester = null;
+         selectedAcademicYear = null;
+       selectedSubject = null;
       });
     }
   }
@@ -299,7 +304,13 @@ class _HomeViewState extends State<HomeView> {
                     else{
                       return InkWell(
                         onTap: (){
-                          if(formkey.currentState!.validate()){
+                          if(formkey.currentState!.validate() &&
+                              selectedStatus! != null
+                              && selectedYear! != null
+                          && selectedSection! != null
+                          && selectedSemester! != null
+                          && selectedAcademicYear! != null
+                          ){
                             BlocProvider.of<SSCubit>(context).getSubject();
                           }
                         },
@@ -313,10 +324,11 @@ class _HomeViewState extends State<HomeView> {
                       SubjectList = subjectList?.map((e) => DropdownMenuItem<int>(
                         value: e.id,
                         child: TEXT(text: e.subjectName!,w: w*0.035,),
-                      ));
+                      )).toList();
                       setState(() {
                         currentStep +=1;
                       });
+
                     }
                     if (state is SubjectListFailure){
                       Flushbar(
@@ -324,7 +336,7 @@ class _HomeViewState extends State<HomeView> {
                         backgroundColor: Colors.white,
                         messageColor: Colors.black,
                         messageSize: h * 0.02,
-                        message: "error",
+                        message: "لا يمكن اتمام العملية الأن",
                       ).show(context);
 
                     }
@@ -335,11 +347,10 @@ class _HomeViewState extends State<HomeView> {
         ),
     ),
     Step(
-        isActive: currentStep >= 0,
+        isActive: currentStep >= 1,
         title: TEXT( w: w *0.035, text: "اختر المادة",),
         content: Column(
           children: [
-
             SizedBox(
               height: h * 0.03,
             ),
@@ -399,18 +410,28 @@ class _HomeViewState extends State<HomeView> {
                       }
                     },
                     listener: (context,state){
-                      if(state is SubjectListSuccess){
-                        setState(() {
-                          currentStep +=1;
-                        });
-                      }
-                      if (state is SubjectListFailure){
+                      if(state is StudentListSuccess){
                         Flushbar(
                           duration: const Duration(seconds: 3),
                           backgroundColor: Colors.white,
                           messageColor: Colors.black,
                           messageSize: h * 0.02,
-                          message: "message",
+                          message: "تمت العملية بنجاح",
+                        ).show(context);
+                        setState(() {
+                          currentStep +=1;
+                        });
+                        Timer( Duration(seconds: 10),() {
+                          initStatereturn();
+                        });
+                      }
+                      if (state is StudentListFailure){
+                        Flushbar(
+                          duration: const Duration(seconds: 3),
+                          backgroundColor: Colors.white,
+                          messageColor: Colors.black,
+                          messageSize: h * 0.02,
+                          message: "لا يمكن اتمام العملية الان",
                         ).show(context);
 
                       }

@@ -36,7 +36,7 @@ class ServerFailure extends Failure{
       return ServerFailure('There is a problem with server, please try later');
     }
     else if(statusCode == 400 || statusCode == 401 || statusCode == 403){
-      return ServerFailure(response['error']['message']);
+      return ServerFailure("missing fields");
     }
     else{
       return ServerFailure('There wan an error, Please try again');
