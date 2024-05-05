@@ -5,8 +5,9 @@ class BoxController extends StatelessWidget {
   double h;
   double w;
   TextInputType textInputType;
+  bool validate;
 
-  BoxController({Key? key, required this.controller, required this.h, required this.w, required this.textInputType}) : super(key: key);
+  BoxController({Key? key, required this.controller, required this.h, required this.w, required this.textInputType, required this.validate}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +30,12 @@ class BoxController extends StatelessWidget {
           debugPrint(val);
         },
         validator: (value) {
-          if(value!.isEmpty || value == null){
-            return "الحقل مطلوب";
+          if(validate){
+            if(value!.isEmpty || value == null){
+              return "الحقل مطلوب";
+            }
+            return null;
           }
-          return null;
         },
         cursorHeight: 0,
         cursorWidth: 0,
