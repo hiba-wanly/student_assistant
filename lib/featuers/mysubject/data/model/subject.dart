@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Subject {
   int? id;
   String? subjectName;
@@ -34,21 +36,37 @@ class Subject {
         this.workMarkFrom});
 
   Subject.fromJson(Map<String, dynamic> json) {
+    debugPrint("DFDFDF");
     id = json['id'];
+    debugPrint("1");
     subjectName = json['subject_name'];
+    debugPrint("2");
     academicYear = json['academic_year'];
+    debugPrint("3");
     section = json['section'];
+    debugPrint("4");
     semester = json['semester'];
+    debugPrint("5");
     year = json['year'];
+    debugPrint("6");
     studyMark = json['study_mark'];
+    debugPrint("7");
     attendanceMark = json['attendance_mark'];
+    debugPrint("8");
     workMark = json['work_mark'];
+    debugPrint("9");
     laboratoryMark = json['laboratory_mark'];
+    debugPrint("10");
     totalMark = json['total_mark'];
+    debugPrint("11");
     numberOfPraccticalSessions = json['number_of_pracctical_sessions'];
+    debugPrint("12");
     numberOfTheoreticalSessions = json['number_of_theoretical_sessions'];
+    debugPrint("13");
     studyMarkFrom = json['study_mark_from'];
+    debugPrint("14");
     workMarkFrom = json['work_mark_from'];
+    debugPrint("15");
   }
 
   // Map<String, dynamic> toJson() {

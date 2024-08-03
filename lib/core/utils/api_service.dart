@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ApiService {
   final Dio _dio;
-  final baseUrl = 'http://192.168.1.110:8000/';
+  final baseUrl = 'http://192.168.1.4:8000/';
   ApiService(this._dio);
   Future<Map<String, dynamic>> get({required String endPoint}) async {
     debugPrint("dio");
@@ -14,11 +14,32 @@ class ApiService {
         'Accept': 'application/json',
       }),
     );
+    debugPrint("response response");
+    debugPrint(response.toString());
+
+    return response.data;
+  }
+  Future<Map<String, dynamic>> getSubject({required String endPoint,required Map<String,dynamic> data1}) async {
+    debugPrint("dio5555");
+    debugPrint(data1.toString());
+    // FormData data2 = FormData.fromMap(data1);
+    debugPrint("$baseUrl$endPoint");
+    var response = await _dio.get(
+      '$baseUrl$endPoint',
+      data: data1,
+      options: Options(headers: {
+        'Accept': 'application/json',
+      }),
+    );
+    debugPrint("response response");
+    debugPrint(response.toString());
+
     return response.data;
   }
 
   Future<Map<String, dynamic>> post({required String endPoint, required Map<String,dynamic> data1}) async {
     FormData data2 = FormData.fromMap(data1);
+    debugPrint("kkk");
     var response = await _dio.post(
       '$baseUrl$endPoint',
       data: data2,

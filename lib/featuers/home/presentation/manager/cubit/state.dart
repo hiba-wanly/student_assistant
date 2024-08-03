@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:student_register/featuers/home/data/model/student.dart';
-import 'package:student_register/featuers/home/data/model/subject.dart';
+import 'package:student_register/featuers/home/data/model/student_info.dart';
+import 'package:student_register/featuers/mysubject/data/model/subject.dart';
 
 @immutable
 abstract class ListState{}
@@ -17,16 +18,18 @@ class StudentListFailure extends ListState{
 class StudentListSuccess extends ListState{
   final Student student;
   StudentListSuccess(this.student);
+
 }
 
-class SubjectListLoading extends ListState{}
+class StudentInfoListLoading extends ListState{}
 
-class SubjectListFailure extends ListState{
+class StudentInfoListFailure extends ListState{
   final String errMessage;
-  SubjectListFailure(this.errMessage);
+  StudentInfoListFailure(this.errMessage);
 }
 
-class SubjectListSuccess extends ListState{
-  final List<Subject> subject;
-  SubjectListSuccess(this.subject);
+class StudentInfoListSuccess extends ListState{
+  final StudentInfoModel studentinfo;
+  StudentInfoListSuccess(this.studentinfo);
 }
+
