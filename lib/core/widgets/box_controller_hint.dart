@@ -49,7 +49,6 @@ class BoxControllerHint extends StatelessWidget {
           ),
           filled: true,
           fillColor: Colors.white,
-          // hoverColor: greybox,
           contentPadding:const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.black),

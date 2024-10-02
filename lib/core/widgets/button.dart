@@ -11,11 +11,6 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      // margin: EdgeInsets.only(
-      // //   left: w * 0.005,
-      // //   // right: w * 0.05,
-      // //   bottom: w * 0.05,
-      //   top:  w * 0.09,),
       height:  h * 0.05,
       width: w * 0.2,
       decoration: BoxDecoration(

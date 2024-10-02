@@ -23,7 +23,6 @@ class BoxController extends StatelessWidget {
           fontSize: h * 0.018,
           fontWeight: FontWeight.w500,
           fontFamily: Almarai,
-          // letterSpacing: 0.1,
         ),
         keyboardType: textInputType,
         onFieldSubmitted: (val) {
@@ -43,8 +42,7 @@ class BoxController extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          // hoverColor: greybox,
-          contentPadding:const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+          contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.black),
           ),
